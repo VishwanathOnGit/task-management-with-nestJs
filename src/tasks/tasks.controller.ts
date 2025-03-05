@@ -1,6 +1,6 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Post } from '@nestjs/common';
 import { TasksService } from './tasks.service';
-import { Task } from './task.model';
+import { Task, TaskStatus } from './task.model';
 
 @Controller('tasks')
 export class TasksController {
@@ -9,5 +9,18 @@ export class TasksController {
   @Get()
   getAllTasks(): Task[] {
     return this.tasksService.getAlltasks();
+  }
+
+  @Post()
+  createTask(title: string, description: string): void {
+    const task: Task = {
+      id: uuid(),
+      title,
+      description,
+      status: TaskStatus.OPEN,
+    };
+
+    this.tasks
+    this.tasksService.createTask(task);
   }
 }
