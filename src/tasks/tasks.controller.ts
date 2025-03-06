@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   NotFoundException,
   Param,
@@ -33,5 +34,10 @@ export class TasksController {
   @Post()
   createTask(@Body() CreateTaskDto: CreateTaskDto): Task {
     return this.tasksService.createTask(CreateTaskDto);
+  }
+
+  @Delete('/:id')
+  deleteTask(@Param('id') id: string): void {
+    this.tasksService.deleteTaskById(id);
   }
 }
