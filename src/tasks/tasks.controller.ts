@@ -18,7 +18,7 @@ export class TasksController {
 
   @Get()
   getAllTasks(): Task[] {
-    return this.tasksService.getAlltasks();
+    return this.tasksService.getAllTasks();
   }
 
   @Get('/:id')
